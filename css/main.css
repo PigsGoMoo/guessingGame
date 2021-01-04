@@ -1,0 +1,10 @@
+.score {
+  float: right;
+  font-size: 16px;
+}
+.score #win {
+  color: green;
+}
+.score #lose {
+  color: red;
+}
