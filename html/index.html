@@ -13,27 +13,56 @@
         ><span id="win">W: 0</span>|<span id="lose">L: 0</span></span
       >
     </h1>
+    <div id="endGame">
+      <h1 id="endgameText"></h1>
+      <h2 id="endgameSubtext"></h2>
+      <button id="newGame">New game</button>
+      <button id="quit">Quit</button>
+    </div>
+
     <div id="gameBox">
       <div id="alreadyGuessed">
-        <h1 id="endgameText"></h1>
-        <h2 id="endgameSubtext"></h2>
-        <h2 id="prevGuessesText">Previous Guesses</h2>
+        <h2 id="prevGuessesText">Previous 5 Guesses</h2>
         <ul id="prevGuesses">
-          <li class="guesses">No guesses yet</li>
-          <li class="guesses">No guesses yet</li>
-          <li class="guesses">No guesses yet</li>
-          <li class="guesses">No guesses yet</li>
-          <li class="guesses">No guesses yet</li>
+          <li id="guess1">-</li>
+          <li id="guess2">-</li>
+          <li id="guess3">-</li>
+          <li id="guess4">-</li>
+          <!-- <li id="guess5">-</li> -->
         </ul>
       </div>
 
       <p id="remaining">One Guess Remaining, you are close!</p>
+      <p id="number"></p>
+      <input type="number" id="guess" placeholder="What's your guess?" />
 
-      <input type="text" id="guess" placeholder="What's your guess?" />
-      <button id="newGame">New game</button>
-      <button id="quit">Quit</button>
       <button id="submit">Submit guess!</button>
       <button id="hint">Give me a hint</button>
+    </div>
+
+    <div id="setupBox">
+      <div id="maxValBox">
+        <h2>How high is the max value?</h2>
+        <p>
+          You will be guessing from a value between 1 and the number you choose.
+          Leave field empty to default to 100.
+          <br />
+          Values smaller than 6 will default to 100.
+        </p>
+        <input type="number" id="max" placeholder="Maximum value?" />
+        <button id="maxValueButton">Submit</button>
+      </div>
+      <div id="guessBox">
+        <h2>How many guesses should you get?</h2>
+        <p id="guessAmount"></p>
+        <p id="guessAmount2"></p>
+        <input
+          type="number"
+          id="numOfGuesses"
+          placeholder="How many guesses?"
+        />
+        <button id="guessAmountButton">Submit</button>
+      </div>
     </div>
     <script src="/js/game.js"></script>
   </body>
