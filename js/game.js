@@ -7,7 +7,7 @@ let gameState = "playing";
 let totalWins = 0;
 let totalLosses = 0;
 const submitButton = document.getElementById("submit");
-const hintButton = document.getElementById("hint");
+const hintButton = document.getElementById("hintButton");
 const myGuess = document.getElementById("guess");
 const newGameButton = document.getElementById("newGame");
 const quitGameButton = document.getElementById("quit");
@@ -141,7 +141,16 @@ function submitGuess(input) {
   }
 }
 
-function getHint() {}
+function getHint() {
+  document.getElementById("hint").style.display = "block";
+  if (totalGuesses === Math.ceil(Math.log2(maxVal))) {
+    document.getElementById(
+      "hint"
+    ).textContent = `If you go by half values every time, you cannot lose.`;
+  } else {
+    document.getElementById("hint").textContent = `Some witty hint here`;
+  }
+}
 
 function setUp() {
   newGameButton.style.display = "none";
@@ -187,6 +196,7 @@ function startGame() {
     document.getElementById("guess3").textContent = `-`;
     document.getElementById("guess2").textContent = `-`;
     document.getElementById("guess1").textContent = `-`;
+    document.getElementById("hint").style.display = "none";
   }
 
   document.getElementById("remaining").textContent = `You have ${
@@ -222,7 +232,7 @@ submitButton.addEventListener("click", () => {
 
 newGameButton.addEventListener("click", setUp);
 
-hintButton.addEventListener("click", getHint());
+hintButton.addEventListener("click", getHint);
 
 guessAmountButton.addEventListener("click", () => {
   const submittedVal = document.getElementById("numOfGuesses").value;
