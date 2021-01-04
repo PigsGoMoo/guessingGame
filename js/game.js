@@ -210,7 +210,7 @@ function startGame() {
 }
 
 submitButton.addEventListener("click", () => {
-  guessVal = Number(myGuess.value);
+  guessVal = Math.trunc(Number(myGuess.value));
   myGuess.value = "";
 
   if (guessVal > 0 && guessVal <= maxVal && gameState === "playing") {
@@ -237,11 +237,13 @@ hintButton.addEventListener("click", getHint);
 guessAmountButton.addEventListener("click", () => {
   const submittedVal = document.getElementById("numOfGuesses").value;
   if (submittedVal >= 1 && submittedVal <= Math.ceil(Math.log2(maxVal))) {
-    totalGuesses = Number(submittedVal);
+    totalGuesses = Math.trunc(Number(submittedVal));
+    document.getElementById("numOfGuesses").value = "";
     startGame();
   } else if (submittedVal === "") {
     totalGuesses = Math.trunc(Math.random() * Math.ceil(Math.log2(maxVal)) + 1);
     console.log(`You get ${totalGuesses} guesses.`);
+    document.getElementById("numOfGuesses").value = "";
     startGame();
   } else {
     alert(`Please enter a valid number.`);
@@ -256,9 +258,9 @@ maxValButton.addEventListener("click", () => {
   if (document.getElementById("max").value < 6) {
     maxVal = 100;
   } else {
-    maxVal = Number(document.getElementById("max").value);
+    maxVal = Math.trunc(Number(document.getElementById("max").value));
   }
-
+  document.getElementById("max").value = "";
   document.getElementById(
     "guessAmount"
   ).textContent = `Please choose a value between 1 and 10. Lower values add more challenge, but it's entirely up to you. If done properly, it is impossible to lose with ${Math.ceil(
